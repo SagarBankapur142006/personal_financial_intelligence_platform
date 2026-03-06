@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Finance IQ — Personal Finance Intelligence</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:'DM Sans',sans-serif;
+background:#0a0c10;
+color:white;
+min-height:100vh;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+border-bottom:1px solid #222;
+}
+
+.logo{
+font-family:'Syne';
+font-size:20px;
+font-weight:800;
+}
+
+.logo span{color:#00e5a0}
+
+.nav-tag{
+font-size:12px;
+color:#00e5a0;
+}
+
+main{
+max-width:1100px;
+margin:auto;
+padding:40px;
+}
+
+.hero{
+text-align:center;
+margin-bottom:50px;
+}
+
+.hero h1{
+font-size:42px;
+font-family:'Syne';
+margin-bottom:10px;
+}
+
+.hero em{
+color:#00e5a0;
+font-style:normal;
+}
+
+.hero p{
+color:#777;
+margin-bottom:30px;
+}
+
+.upload-zone{
+border:2px dashed #333;
+border-radius:16px;
+padding:40px;
+background:#111318;
+cursor:pointer;
+}
+
+.upload-zone:hover{
+border-color:#00e5a0;
+}
+
+.upload-icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.btn-primary{
+background:#00e5a0;
+border:none;
+padding:14px 25px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn-primary:disabled{
+opacity:0.4;
+cursor:not-allowed;
+}
+
+#loading{
+display:none;
+text-align:center;
+margin-top:20px;
+}
+
+#dashboard{
+display:none;
+}
+
+.metrics-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-bottom:30px;
+}
+
+.metric-card{
+background:#111318;
+padding:20px;
+border-radius:16px;
+}
+
+.metric-label{
+font-size:12px;
+color:#777;
+}
+
+.metric-value{
+font-size:24px;
+font-weight:bold;
+}
+
+.bottom-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.card{
+background:#111318;
+padding:20px;
+border-radius:16px;
+}
+
+.legend{
+margin-top:15px;
+}
+
+.insight-item{
+background:#191c24;
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">Finance<span>IQ</span></div>
+<span class="nav-tag">AI-Powered Analysis</span>
+</nav>
+
+<main>
+
+<section class="hero" id="uploadSection">
+
+<h1>Understand where your <br><em>money is going</em></h1>
+
+<p>Upload your transaction CSV and get instant intelligence on your spending.</p>
+
+<div class="upload-zone">
+
+<div class="upload-icon">📂</div>
+
+<strong id="fileLabel">Upload your CSV file</strong>
+
+<p>date, merchant, amount</p>
+
+<input type="file" id="fileInput" accept=".csv">
+
+</div>
+
+<br>
+
+<button class="btn-primary" id="analyzeBtn" disabled onclick="uploadFile()">
+Analyze Transactions
+</button>
+
+</section>
+
+<div id="loading">
+<p>Analyzing transactions...</p>
+</div>
+
+<div id="dashboard">
+
+<div class="metrics-grid">
+
+<div class="metric-card">
+<div class="metric-label">Total Spending</div>
+<div class="metric-value" id="totalSpent"></div>
+</div>
+
+<div class="metric-card">
+<div class="metric-label">Health Score</div>
+<div class="metric-value" id="healthScore"></div>
+</div>
+
+<div class="metric-card">
+<div class="metric-label">Yearly Projection</div>
+<div class="metric-value" id="yearlyProj"></div>
+</div>
+
+<div class="metric-card">
+<div class="metric-label">Top Category</div>
+<div class="metric-value" id="topCategory"></div>
+</div>
+
+</div>
+
+<div class="bottom-grid">
+
+<div class="card">
+
+<h3>Spending Breakdown</h3>
+
+<canvas id="pieChart"></canvas>
+
+<div class="legend" id="legend"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Financial Insights</h3>
+
+<div id="insightsList"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+let selectedFile=null
+let chartInstance=null
+
+const fileInput=document.getElementById("fileInput")
+const analyzeBtn=document.getElementById("analyzeBtn")
+const fileLabel=document.getElementById("fileLabel")
+
+fileInput.addEventListener("change",e=>{
+selectedFile=e.target.files[0]
+
+if(selectedFile){
+fileLabel.textContent=selectedFile.name
+analyzeBtn.disabled=false
+}
+})
+
+function fmt(n){
+return "₹"+Number(n).toLocaleString("en-IN")
+}
+
+async function uploadFile(){
+
+if(!selectedFile) return
+
+document.getElementById("loading").style.display="block"
+
+const formData=new FormData()
+formData.append("file",selectedFile)
+
+try{
+
+const res=await fetch("http://127.0.0.1:8000/analyze",{
+method:"POST",
+body:formData
+})
+
+const json=await res.json()
+
+document.getElementById("loading").style.display="none"
+
+if(!res.ok){
+alert(json.detail)
+return
+}
+
+renderDashboard(json)
+
+}catch(err){
+
+document.getElementById("loading").style.display="none"
+alert("Server not reachable")
+
+}
+
+}
+
+function renderDashboard(json){
+
+const d=json.data || json
+
+document.getElementById("uploadSection").style.display="none"
+document.getElementById("dashboard").style.display="block"
+
+document.getElementById("totalSpent").textContent=fmt(d.total_spent)
+document.getElementById("healthScore").textContent=d.financial_health_score+"/100"
+document.getElementById("yearlyProj").textContent=fmt(d.yearly_spending_projection)
+document.getElementById("topCategory").textContent=d.top_category
+
+renderChart(d.category_spending)
+renderInsights(d.insights)
+
+}
+
+function renderChart(data){
+
+const labels=Object.keys(data)
+const values=Object.values(data)
+
+if(chartInstance) chartInstance.destroy()
+
+chartInstance=new Chart(document.getElementById("pieChart"),{
+type:"doughnut",
+data:{
+labels:labels,
+datasets:[{
+data:values
+}]
+}
+})
+
+}
+
+function renderInsights(insights){
+
+const list=document.getElementById("insightsList")
+
+list.innerHTML=""
+
+insights.forEach(i=>{
+list.innerHTML+=`<div class="insight-item">${i}</div>`
+})
+
+}
+
+</script>
+
+</body>
+</html>

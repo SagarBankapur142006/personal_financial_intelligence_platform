@@ -1,0 +1,101 @@
+date,description,amount,category
+01-01-2024,Uber ride to office,250,Transport
+02-01-2024,Swiggy chicken biryani order,420,Food
+03-01-2024,Petrol pump fuel refill,1800,Transport
+04-01-2024,Netflix monthly subscription,649,Entertainment
+05-01-2024,Blinkit grocery vegetables delivery,950,Groceries
+06-01-2024,BookMyShow IMAX movie ticket,750,Entertainment
+07-01-2024,Electricity bill payment,2200,Bills
+08-01-2024,Starbucks cappuccino coffee,320,Food
+09-01-2024,Amazon wireless headphones purchase,5400,Shopping
+10-01-2024,CultFit gym membership fee,1500,Health
+11-01-2024,Dominos pizza dinner order,680,Food
+12-01-2024,City bus commute ticket,60,Transport
+13-01-2024,Weekly grocery fruits vegetables,620,Groceries
+14-01-2024,Spotify premium subscription,119,Entertainment
+15-01-2024,Myntra clothes shopping order,2500,Shopping
+16-01-2024,Apollo pharmacy medicine purchase,890,Health
+17-01-2024,Ola cab ride to airport,540,Transport
+18-01-2024,Zomato dinner burger combo,410,Food
+19-01-2024,Water utility bill payment,1200,Bills
+20-01-2024,INOX cinema ticket booking,700,Entertainment
+21-01-2024,Amazon mobile charger purchase,899,Shopping
+22-01-2024,Blinkit milk and bread grocery,350,Groceries
+23-01-2024,IRCTC train ticket booking,1850,Transport
+24-01-2024,Restaurant dinner with friends,1250,Food
+25-01-2024,Gas cylinder refill payment,1100,Bills
+26-01-2024,PharmEasy medicine order,760,Health
+27-01-2024,Flipkart smartphone case purchase,450,Shopping
+28-01-2024,Uber late night ride home,300,Transport
+29-01-2024,Swiggy lunch thali order,280,Food
+30-01-2024,Hotstar premium subscription renewal,499,Entertainment
+01-02-2024,Grocery supermarket vegetables purchase,870,Groceries
+02-02-2024,Metro train ticket recharge,200,Transport
+03-02-2024,KFC chicken bucket meal,650,Food
+04-02-2024,Electricity utility bill payment,2300,Bills
+05-02-2024,Amazon laptop stand purchase,1200,Shopping
+06-02-2024,BookMyShow theatre ticket,820,Entertainment
+07-02-2024,Pharmacy health supplements purchase,980,Health
+08-02-2024,Uber office commute ride,240,Transport
+09-02-2024,Starbucks iced latte coffee,340,Food
+10-02-2024,BigBasket monthly grocery order,3200,Groceries
+11-02-2024,Netflix streaming subscription,649,Entertainment
+12-02-2024,Ajio clothing purchase order,3100,Shopping
+13-02-2024,Petrol station fuel refill,1700,Transport
+14-02-2024,Romantic dinner restaurant bill,2100,Food
+15-02-2024,Gas pipeline utility payment,950,Bills
+16-02-2024,Medicine purchase hospital pharmacy,650,Health
+17-02-2024,Ola cab ride to mall,280,Transport
+18-02-2024,Zomato biryani delivery order,520,Food
+19-02-2024,Amazon USB cable purchase,250,Shopping
+20-02-2024,Movie theatre popcorn ticket combo,890,Entertainment
+21-02-2024,Blinkit instant grocery delivery,600,Groceries
+22-02-2024,Uber airport drop ride,780,Transport
+23-02-2024,Pizza Hut pizza dinner order,720,Food
+24-02-2024,Electricity bill online payment,2100,Bills
+25-02-2024,Nykaa skincare shopping purchase,1600,Shopping
+26-02-2024,Spotify music premium subscription,119,Entertainment
+27-02-2024,Doctor clinic consultation fee,900,Health
+28-02-2024,Metro card recharge commute,300,Transport
+01-03-2024,Swiggy breakfast dosa order,210,Food
+02-03-2024,Amazon bluetooth speaker purchase,2400,Shopping
+03-03-2024,BookMyShow weekend cinema ticket,850,Entertainment
+04-03-2024,Grocery vegetables fruits market purchase,740,Groceries
+05-03-2024,Uber ride late night home,360,Transport
+06-03-2024,Dominos pizza party order,1250,Food
+07-03-2024,Electric bill online payment,2150,Bills
+08-03-2024,Apollo pharmacy vitamin purchase,680,Health
+09-03-2024,Flipkart headphones purchase,1999,Shopping
+10-03-2024,Netflix streaming membership renewal,649,Entertainment
+11-03-2024,Blinkit grocery snacks order,520,Groceries
+12-03-2024,Ola cab office ride,250,Transport
+13-03-2024,Zomato burger lunch order,340,Food
+14-03-2024,Gas utility monthly payment,980,Bills
+15-03-2024,PharmEasy medical order delivery,720,Health
+16-03-2024,Amazon kitchen items purchase,1750,Shopping
+17-03-2024,INOX theatre movie night ticket,780,Entertainment
+18-03-2024,Uber city commute ride,260,Transport
+19-03-2024,Restaurant buffet dinner bill,1900,Food
+20-03-2024,BigBasket grocery bulk order,2800,Groceries
+21-03-2024,Electricity utility bill payment,2250,Bills
+22-03-2024,CultFit gym membership renewal,1500,Health
+23-03-2024,Amazon office desk lamp purchase,1400,Shopping
+24-03-2024,Spotify premium music renewal,119,Entertainment
+25-03-2024,Ola cab airport pickup ride,690,Transport
+26-03-2024,Swiggy chicken burger combo order,430,Food
+27-03-2024,Grocery supermarket weekly shopping,1200,Groceries
+28-03-2024,Gas cylinder home delivery payment,1150,Bills
+29-03-2024,Pharmacy medicine tablets purchase,480,Health
+30-03-2024,Flipkart smartwatch purchase,4800,Shopping
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
